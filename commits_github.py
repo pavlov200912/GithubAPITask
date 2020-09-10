@@ -8,11 +8,14 @@ def get_commits_messages(user, repo, last_n=100):
 
     base_url = 'https://api.github.com'
     response = requests.get(f'{base_url}/repos/{user}/{repo}/commits?per_page={last_n}')
+
+    # This is not "production"-like behaviour, this exception must be caught,
+    # But in case of mini-test-task, I think raising an error is an appropriate way to handle this.
     response.raise_for_status()
 
     # Assume response use JSON, as it said in v3 github api documentation
-    # TODO: add try / catch on response.json()
-
+    # In case the JSON decoding fails, response.json() raises an exception.
+    # What you should do in real project: add try / catch on response.json()
     return [commit_data['commit']['message'] for commit_data in response.json()]
 
 
