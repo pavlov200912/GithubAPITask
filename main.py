@@ -4,7 +4,7 @@ from commits_github import get_commits_messages
 
 if __name__ == '__main__':
     nltk.download('stopwords')
-    nltk.download('punctuation')
+    nltk.download('punkt')
 
     messages = get_commits_messages(user='JetBrains', repo='kotlin')
 
@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     tokens = nltk.word_tokenize(text)
 
-    remove_stopwords = True
+    remove_stopwords = False
     remove_non_letters = True
 
     if remove_stopwords:
