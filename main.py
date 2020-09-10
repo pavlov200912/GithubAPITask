@@ -22,4 +22,5 @@ if __name__ == '__main__':
     if remove_non_letters:
         tokens = list(filter(lambda word: word.isalpha(), tokens))
 
+    print('30 most common words in commits messages:')
     print(*Counter(tokens).most_common(n=30), sep='\n')
